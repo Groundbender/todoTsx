@@ -6,6 +6,8 @@ export const ToDoList = (props: {
   todos: ToDo[];
   updateToDo: Function;
   deleteToDo: Function;
+  notifyUpdate: Function;
+  notifyDelete: Function;
 }) => {
   const checkedList = () => {
     return props.todos
@@ -17,6 +19,8 @@ export const ToDoList = (props: {
             key={index}
             updateToDo={props.updateToDo}
             deleteToDo={props.deleteToDo}
+            notifyUpdate={props.notifyUpdate}
+            notifyDelete={props.notifyDelete}
           />
         );
       });
@@ -31,6 +35,8 @@ export const ToDoList = (props: {
             key={index}
             updateToDo={props.updateToDo}
             deleteToDo={props.deleteToDo}
+            notifyUpdate={props.notifyUpdate}
+            notifyDelete={props.notifyDelete}
           />
         );
       });

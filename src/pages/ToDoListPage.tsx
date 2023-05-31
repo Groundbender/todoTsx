@@ -4,10 +4,34 @@ import { ToDoList } from "../components/ToDoList/ToDoList";
 import { ToDo } from "../models/todo-item";
 import { useState } from "react";
 
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const ToDoListPage = () => {
   const [todos, setTodos] = useState<ToDo[]>([]);
 
   // const todos: ToDo[] = [];
+
+  const notifyUpdate = (text: string) =>
+    toast.info(`Case "${text}" updated!`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
+  const notifyDelete = (text: string) =>
+    toast.error(`Case "${text}" deleted!`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+    });
 
   const createNewToDo = (text: string) => {
     const newToDo: ToDo = {
@@ -39,7 +63,15 @@ export const ToDoListPage = () => {
     <>
       <Header />
       <Form createNewToDo={createNewToDo} />
-      <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
+      <ToDoList
+        todos={todos}
+        updateToDo={updateToDo}
+        deleteToDo={deleteToDo}
+        notifyUpdate={notifyUpdate}
+        notifyDelete={notifyDelete}
+      />
+      {/* <button onClick={notify}>Notify</button> */}
+      <ToastContainer transition={Slide} />
     </>
   );
 };
