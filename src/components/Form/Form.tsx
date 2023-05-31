@@ -1,12 +1,16 @@
 import { ChangeEvent, useState } from "react";
 import "./Form.scss";
 
-export const Form = (props: { createNewToDo: Function }) => {
+export const Form = (props: {
+  createNewToDo: Function;
+  notifyAdd: Function;
+}) => {
   const [text, setText] = useState<string>("");
 
-  const formSubmit = (event: any) => {
+  const formSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (text) {
+      props.notifyAdd(text);
       props.createNewToDo(text);
       setText("");
     }
