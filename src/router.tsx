@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layouts/layout";
 import { NotFound } from "./pages/404";
-import { HomePage } from "./pages/ViewList";
+import { ViewListPage } from "./pages/ViewListPage";
 import { ToDoListPage } from "./pages/ToDoListPage";
-import { ItemDescription } from "./pages/ItemDescription";
+import { ViewListItem } from "./pages/ViewListItem";
 import { ToDo } from "./models/todo-item";
 
 const todos: ToDo[] = [
@@ -38,20 +38,16 @@ export const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <HomePage todos={todos} />,
-        },
-        {
-          path: "/todo",
           element: <ToDoListPage />,
         },
+
         {
-          path: "/list/",
-          children: [
-            {
-              path: ":id",
-              element: <ItemDescription todos={todos} />,
-            },
-          ],
+          path: "/list",
+          element: <ViewListPage todos={todos} />,
+        },
+        {
+          path: "/list/:id",
+          element: <ViewListItem todos={todos} />,
         },
       ],
     },

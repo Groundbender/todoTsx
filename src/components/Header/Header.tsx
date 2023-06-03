@@ -11,7 +11,7 @@ export const Header = () => {
         <NavLink to="/" className={getActiveLink}>
           Home
         </NavLink>
-        <NavLink to="/todo" className={getActiveLink}>
+        <NavLink to="/list/" className={getActiveLink}>
           ToDo
         </NavLink>
       </div>

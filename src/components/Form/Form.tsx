@@ -7,8 +7,8 @@ export const Form = (props: {
 }) => {
   const [text, setText] = useState<string>("");
 
-  const formSubmit = (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const formSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (text) {
       props.notifyAdd(text);
       props.createNewToDo(text);
