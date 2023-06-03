@@ -8,7 +8,7 @@ export const NotFound = () => {
       className="container"
       style={{
         background: "#4682b4",
-        width: "60%",
+        width: "500px",
         height: "60%",
         margin: "0 auto",
         borderRadius: "20px",

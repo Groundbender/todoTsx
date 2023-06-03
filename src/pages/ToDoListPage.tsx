@@ -11,36 +11,22 @@ export const ToDoListPage = () => {
 
   // const todos: ToDo[] = [];
 
+  const notifyStyles: object = {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "colored",
+  };
+
   const notifyUpdate = (text: string) =>
-    toast.info(`Case "${text}" is successfully updated!`, {
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-    });
+    toast.info(`Case "${text}" is successfully updated!`, notifyStyles);
   const notifyDelete = (text: string) =>
-    toast.error(`Case "${text}" is successfully deleted!`, {
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-    });
+    toast.error(`Case "${text}" is successfully deleted!`, notifyStyles);
   const notifyAdd = (text: string) =>
-    toast.success(`Case "${text}" is successfully added!`, {
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-    });
+    toast.success(`Case "${text}" is successfully added!`, notifyStyles);
 
   const createNewToDo = (text: string) => {
     const newToDo: ToDo = {
