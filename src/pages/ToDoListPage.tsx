@@ -5,11 +5,14 @@ import { useState } from "react";
 
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { createAction, deleteAction, updateAction } from "../feature/todoList";
 
 export const ToDoListPage = () => {
-  const [todos, setTodos] = useState<ToDo[]>([]);
-
-  // const todos: ToDo[] = [];
+  // const [todos, setTodos] = useState<ToDo[]>([]);
+  const todoList = useSelector((state: RootState) => state.todoList.todos);
+  const dispatch = useDispatch();
 
   const notifyStyles: object = {
     position: "bottom-right",
@@ -29,36 +32,22 @@ export const ToDoListPage = () => {
     toast.success(`Case "${text}" is successfully added!`, notifyStyles);
 
   const createNewToDo = (text: string) => {
-    const newToDo: ToDo = {
-      id: todos.length,
-      text: text,
-      isDone: false,
-    };
-    setTodos([...todos, newToDo]);
+    dispatch(createAction(text));
   };
 
   const updateToDo = (toDoItem: ToDo) => {
-    const newToDos = todos.map((item) => {
-      if (item.id === toDoItem.id) {
-        item.isDone = !toDoItem.isDone;
-      }
-      return item;
-    });
-
-    setTodos(newToDos);
+    dispatch(updateAction(toDoItem));
   };
 
   const deleteToDo = (toDoItem: ToDo) => {
-    const newToDos = todos.filter((item) => item.id !== toDoItem.id);
-
-    setTodos(newToDos);
+    dispatch(deleteAction(toDoItem));
   };
 
   return (
     <>
       <Form createNewToDo={createNewToDo} notifyAdd={notifyAdd} />
       <ToDoList
-        todos={todos}
+        todos={todoList}
         updateToDo={updateToDo}
         deleteToDo={deleteToDo}
         notifyUpdate={notifyUpdate}
