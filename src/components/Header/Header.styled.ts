@@ -36,6 +36,17 @@ export const HeaderNav = styled.div`
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+
+    button {
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+      width: 70px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: white;
+    }
   }
 `;
 
