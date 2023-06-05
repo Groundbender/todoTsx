@@ -1,5 +1,14 @@
 import { ToDo } from "../../../models/todo-item";
-import "./ToDoListItem.scss";
+
+import checkIcon from "../../../assets/images/check.png";
+import uncheckIcon from "../../../assets/images/uncheck.png";
+import trachIcon from "../../../assets/images/trash.png";
+import {
+  ToDoItemControls,
+  ToDoItem,
+  ToDoItemControl,
+  ToDoItemText,
+} from "./ToDoListItem.styled";
 
 export const ToDoListItem = (props: {
   toDoItem: ToDo;
@@ -9,24 +18,24 @@ export const ToDoListItem = (props: {
   notifyDelete: Function;
 }) => {
   return (
-    <li className="todo-list-item__wrapper">
-      <span>{props.toDoItem.text}</span>
-      <div className="todo-list-item__buttons">
-        <button
-          className="btn-trash"
+    <ToDoItem>
+      <ToDoItemText>{props.toDoItem.text}</ToDoItemText>
+      <ToDoItemControls>
+        <ToDoItemControl
+          icon={trachIcon}
           onClick={() => {
             props.deleteToDo(props.toDoItem);
             props.notifyDelete(props.toDoItem.text);
           }}
-        ></button>
-        <button
-          className={props.toDoItem.isDone ? "btn-check" : "btn-uncheck"}
+        ></ToDoItemControl>
+        <ToDoItemControl
+          icon={props.toDoItem.isDone ? checkIcon : uncheckIcon}
           onClick={() => {
             props.updateToDo(props.toDoItem);
             props.notifyUpdate(props.toDoItem.text);
           }}
-        ></button>
-      </div>
-    </li>
+        ></ToDoItemControl>
+      </ToDoItemControls>
+    </ToDoItem>
   );
 };

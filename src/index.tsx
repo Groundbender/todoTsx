@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/scss/normalize.scss";
-import "./assets/scss/style.scss";
+// import "./assets/scss/normalize.scss";
+// import "./assets/scss/style.scss";
 import { RouterProvider } from "react-router-dom";
 
 import { router } from "./router";
 
 import { store } from "./store";
 import { Provider } from "react-redux";
+import { GlobalStyles } from "./styles/GLobalStyle";
 
 // новый синтаксис
 
@@ -17,6 +18,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <GlobalStyles />
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
