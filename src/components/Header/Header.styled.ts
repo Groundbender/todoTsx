@@ -6,7 +6,8 @@ export const HeaderWrapper = styled.header`
   right: 0;
   left: 0;
   height: 50px;
-  background-color: #4682b4;
+  transition: background-color 0.2s;
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   display: flex;
   align-items: center;
 
@@ -28,6 +29,14 @@ export const HeaderNav = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  div {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `;
 
 export const HeaderNavLink = styled(NavLink)`
