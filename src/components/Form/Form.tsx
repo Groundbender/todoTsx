@@ -8,19 +8,24 @@ import {
 } from "./Form.styled";
 
 import plusIcon from "../../assets/images/plus.png";
-
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store";
+import { setInputValue } from "../../feature/form";
 export const Form = (props: {
   createNewToDo: Function;
   notifyAdd: Function;
 }) => {
-  const [text, setText] = useState<string>("");
+  // const [text, setText] = useState<string>("");
+  const formValue = useSelector((state: RootState) => state.formValue.value);
+  const dispatch = useDispatch();
 
   const formSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (text) {
-      props.notifyAdd(text);
-      props.createNewToDo(text);
-      setText("");
+    if (formValue) {
+      props.notifyAdd(formValue);
+      props.createNewToDo(formValue);
+      // setText("");
+      dispatch(setInputValue(""));
     }
   };
 
@@ -34,9 +39,9 @@ export const Form = (props: {
       <FormBlock action="#" onSubmit={formSubmit}>
         <FormLabel>
           <FormField
-            value={text}
+            value={formValue}
             type="text"
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => dispatch(setInputValue(e.target.value))}
           />
           <FormControl icon={plusIcon} />
         </FormLabel>
