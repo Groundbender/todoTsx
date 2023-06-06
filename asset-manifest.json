@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/todoTsx/static/css/main.98ec47ca.css",
+    "main.js": "/todoTsx/static/js/main.46528892.js",
+    "static/media/chill.jpg": "/todoTsx/static/media/chill.9a4c41a660c05c3fe5fe.jpg",
+    "index.html": "/todoTsx/index.html",
+    "main.98ec47ca.css.map": "/todoTsx/static/css/main.98ec47ca.css.map",
+    "main.46528892.js.map": "/todoTsx/static/js/main.46528892.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98ec47ca.css",
+    "static/js/main.46528892.js"
+  ]
+}
