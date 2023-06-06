@@ -34,5 +34,5 @@ export const router = createBrowserRouter(
     },
   ],
   // учитываем поддомены (для git pages)
-  { basename: "/app/" }
+  { basename: "/todoTsx/" }
 );
